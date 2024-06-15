@@ -11,13 +11,12 @@ resource "aws_route53_zone_association" "dns-zone-assoc" {
 }
 
 resource "aws_route53_record" "dns-zone-rrs" {
-  for_each = {
-    for rr in var.zone_rrs: rr.name => rr...
-  }
+  count = length(var.zone_rrs)
+
   zone_id = data.aws_route53_zone.dns-zone[0].zone_id
 
-  name = each.value.name
-  type = each.value.type
-  ttl = each.value.ttl
-  records = each.value.data
+  name = ${var.zone_records[count.index]}.name
+  ttl = ${var.zone_records[count.index]}.ttl
+  type = ${var.zone_records[count.index]}.type
+  records = ${var.zone_records[count.index]}.records
 }
