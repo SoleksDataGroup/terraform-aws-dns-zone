@@ -12,7 +12,7 @@ resource "aws_route53_zone_association" "dns-zone-assoc" {
 
 resource "aws_route53_record" "dns-zone-rrs" {
   for_each = {
-    for rr in var.zone_rrs: rr.name => rr
+    for rr in var.zone_rrs: rr.name => rr...
   }
   zone_id = data.aws_route53_zone.dns-zone[0].zone_id
 
