@@ -15,8 +15,8 @@ resource "aws_route53_record" "dns-zone-rrs" {
 
   zone_id = data.aws_route53_zone.dns-zone[0].zone_id
 
-  name = "${var.zone_records[count.index]}.name"
-  ttl = "${var.zone_records[count.index]}.ttl"
-  type = "${var.zone_records[count.index]}.type"
-  records = "${var.zone_records[count.index]}.records"
+  name = "${var.zone_rrs[count.index]}.name"
+  ttl = "${var.zone_rrs[count.index]}.ttl"
+  type = "${var.zone_rrs[count.index]}.type"
+  records = "${var.zone_rrs[count.index]}.records"
 }
