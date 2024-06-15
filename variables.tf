@@ -26,7 +26,7 @@ variable "zone_rrs" {
     name = string
     type = string
     ttl = optional(number)
-    data = string
+    data = list(string)
   }))
   default = null
 }

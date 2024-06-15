@@ -19,5 +19,5 @@ resource "aws_route53_record" "dns-zone-rrs" {
   name = each.value.name
   type = each.value.type
   ttl = each.value.ttl
-  records = [each.value.data]
+  records = each.value.data
 }
